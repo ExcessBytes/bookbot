@@ -7,23 +7,17 @@ def word_count(filepath):
     text = get_book_text(filepath)
     words = text.split()
     count = len(words)
-    print(f"Found {count} total words")
+    return f"Found {count} total words"
+
+from collections import Counter
 
 def character_count(filepath):
-    text = get_book_text(filepath)
-    lower_case_text = text.lower()
-    dictionary = {}
-    dictionary_list = []
-    characters = list(lower_case_text)
-    for i in characters:
-        if i not in dictionary:
-            dictionary[f"{i}"] = 0
-        if i in dictionary:
-            dictionary[f"{i}"] += 1
-    for i in dictionary:
-        dictionary_list.append({"char": i, "num": dictionary[i]})
-        
+    text = get_book_text(filepath).lower()
+    counts = Counter(text)
+
+    dictionary_list = [{"char": char, "num": count} for char, count in counts.items()]
     dictionary_list.sort(reverse=True, key=sort_on)
+    
     return dictionary_list
 
 def sort_on(items):
