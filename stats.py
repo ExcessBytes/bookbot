@@ -5,10 +5,8 @@ def get_book_text(filepath):
 
 def word_count(filepath):
     text = get_book_text(filepath)
-    word = text.split()
-    count = 0
-    for word in range(0,len(word), 1):
-        count += 1
+    words = text.split()
+    count = len(words)
     print(f"Found {count} total words")
 
 def character_count(filepath):
